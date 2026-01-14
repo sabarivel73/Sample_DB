@@ -1,0 +1,51 @@
+<a routerLink="/post">Redirect</a>
+<form (ngSubmit)="createEntity()">
+    <label>Name : </label>
+    <input type="text" [(ngModel)]="newApi.name" name="API_Name">
+    <br><br>
+    <label>Email : </label>
+    <input type="text" [(ngModel)]="newApi.email" name="API_Email">
+    <br><br>
+    <label>Location : </label>
+    <input type="text" [(ngModel)]="newApi.location" name="API_Location">
+    <br><br>
+    <label>Role : </label>
+    <input type="text" [(ngModel)]="newApi.role" name="API_Role">
+    <br><br>
+    <label>Status : </label>
+    <input type="text" [(ngModel)]="newApi.status" name="API_Status">
+    <br><br>
+    <button type="submit">Post</button>
+</form>
+<div>
+    <div *ngIf="!(getApi.length>0);else entityList">
+        <p>No Data</p>
+    </div>
+    <ng-template #entityList>
+        <ul *ngFor="let i of getApi;">
+            <li>
+                <p>
+                    {{i.name}} | {{i.email}} | {{i.location}} | {{i.role}} | {{i.status}}
+                    <button type="button" (click)="edit_Post(i)">Edit</button>
+                    <button type="button" (click)="delete_Post(i.uid)">Delete</button>
+                </p>
+            </li>
+        </ul>
+    </ng-template>
+</div>
+<div *ngIf="editPost">
+    <form (ngSubmit)="update_Post()">
+        <label for="updateValue_1">Edit Name : </label>
+        <input type="text" [(ngModel)]="updatePost.name" name="updatedName" id="updateValue_1">
+        <label for="updateValue_2">Edit Email : </label>
+        <input type="text" [(ngModel)]="updatePost.email" name="updatedEmail" id="updateValue_2">
+        <label for="updateValue_3">Edit Location : </label>
+        <input type="text" [(ngModel)]="updatePost.location" name="updatedLocation" id="updateValue_3">
+        <label for="updateValue_4">Edit Role : </label>
+        <input type="text" [(ngModel)]="updatePost.role" name="updatedRole" id="updateValue_4">
+        <label for="updateValue_5">Edit Status : </label>
+        <input type="text" [(ngModel)]="updatePost.status" name="updatedStatus" id="updateValue_5">
+        <button type="submit">Save</button>
+        <button type="button" (click)="closeEdit()">Close</button>
+    </form>
+</div>
