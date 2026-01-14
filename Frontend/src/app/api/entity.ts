@@ -7,7 +7,7 @@ import { Entity } from './entity.model';
   providedIn: 'root',
 })
 export class EntityService {
-  private api_1 = "http://localhost:8080/VWR";
+  private api_1 = "http://localhost:8080/api";
   constructor(private httpClient: HttpClient){}
   create_post(newPost : Entity):Observable<Entity>{
     return this.httpClient.post<Entity>(this.api_1,newPost);
