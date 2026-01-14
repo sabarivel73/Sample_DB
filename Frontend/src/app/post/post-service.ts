@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PostService {
-  private api_1 = "http://localhost:8080/VWR/post";
+  private api_1 = "http://localhost:8080/post";
   constructor(private httpClient:HttpClient){}
   create_post(newPost : PostEntity):Observable<PostEntity>{
     return this.httpClient.post<PostEntity>(this.api_1,newPost);
